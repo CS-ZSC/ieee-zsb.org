@@ -127,7 +127,7 @@ transparent = true;
                 });
 
                 $('[data-toggle="wizard-radio"]').click(function(){
-                    wizard = $(this).closest('.wizard-card');
+                    wizard = $(this).closest('.tab-pane');
                     wizard.find('[data-toggle="wizard-radio"]').removeClass('active');
                     $(this).addClass('active');
                     $(wizard).find('[type="radio"]').removeAttr('checked');
