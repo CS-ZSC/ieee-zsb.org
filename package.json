@@ -1,19 +1,23 @@
 {
   "name": "ieee-zsb.org",
   "version": "1.0.0",
-  "description": "",
+  "description": "IEEE ZSB Website",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/cs-zsc/ieee-zsb.org.git"
-  },
-  "author": "Mohamed Anwar <mohamed_anwar@opmbx.org>",
+  "author": "",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/cs-zsc/ieee-zsb.org/issues"
+  "dependencies": {
+    "ejs": "^2.5.5",
+    "express": "^4.14.0",
+    "marked": "^0.3.6",
+    "mongodb": "^2.2.21"
   },
-  "homepage": "https://github.com/cs-zsc/ieee-zsb.org#readme"
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-inject": "^4.2.0",
+    "gulp-nodemon": "^2.2.1"
+  }
 }
