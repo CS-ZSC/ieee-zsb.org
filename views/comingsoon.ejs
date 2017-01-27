@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Coming Soon | IEEE Coming soon</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet"  target="_blank">
+    <link href="/css/font-awesome.min.css" rel="stylesheet"  target="_blank">
+    <link href="/css/main.css" rel="stylesheet"  target="_blank">
+    <link href="/css/responsive.css" rel="stylesheet"  target="_blank">
+
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <link rel="icon" href="images/logo.png">
+</head><!--/head-->
+
+<body>
+    <div class="logo-image">
+       <a href="/"  target="_parent">
+         <img class="img-responsive" style="height: 200px; width: auto;" src="/images/logo.png" alt="">
+       </a>
+    </div>
+     <section id="coming-soon">
+         <div class="container">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2">
+                    <div class="text-center coming-content">
+                        <h1>UNDER CONSTRUCTION</h1>
+                        <p>We have been spending long hours in order to launch our new website.
+                            follow us on Facebook or Twitter to stay up to date.</p>
+                        <div class="social-link">
+                            <span><a href="https://www.facebook.com/IEEEZSB/"  target="_blank"><i class="fa fa-facebook"></i></a></span>
+                            <span><a href="https://twitter.com/ieeezsb"  target="_blank"><i class="fa fa-twitter"></i></a></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="time-count">
+                        <ul id="countdown">
+                            <li class="angle-one">
+                                <span class="days time-font">00</span>
+                                <p>Days</p>
+                            </li>
+                            <li class="angle-two">
+                                <span class="hours time-font">00</span>
+                                <p>Hours</p>
+                            </li>
+                            <li class="angle-three">
+                                <span class="minutes time-font">00</span>
+                                <p class="minute">Mins</p>
+                            </li>
+                            <li class="angle-four">
+                                <span class="seconds time-font">00</span>
+                                <p>Secs</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <%# <section id="subscribe">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h2><i class="fa fa-envelope-o"></i> SUBSCRIBE TO OUR NEWSLETTER</h2>
+                            <p>Get latest updates and news from IEEE Zagazig Student Branch</p>
+                        </div>
+                        <div class="col-sm-6 newsletter">
+                            <form id="newsletter">
+                                <input class="form-control" type="email" name="email"  value="" placeholder="Enter Your email">
+                                <i class="fa fa-check"></i>
+                            </form>
+                            <p>Don't worry we will not use your email for spam</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>%>
+
+    <section id="coming-soon-footer" class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="text-center">
+                    <p>&copy; IEEE Zagazig Student Brach. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/coundown-timer.js"></script>
+    <script type="text/javascript" src="js/wow.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript">
+            //Countdown js
+         $("#countdown").countdown({
+                date: "15 february 2017 00:00:00",
+                format: "on"
+            },
+            function() {
+                // callback function
+        });
+    </script>
+
+</body>
+</html>
