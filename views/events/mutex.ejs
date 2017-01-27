@@ -74,19 +74,19 @@
 											</a>
 										</li>
 										<li>
-											<a href="#account" data-toggle="tab">
+											<a href="#knowledge" data-toggle="tab">
 												<div class="icon-circle">
 													<i class="ti-settings"></i>
 												</div>
-												Work
+												Knowledge
 											</a>
 										</li>
 										<li>
-											<a href="#address" data-toggle="tab">
+											<a href="#workshops" data-toggle="tab">
 												<div class="icon-circle">
-													<i class="ti-map"></i>
+													<i class="ti-desktop"></i>
 												</div>
-												Address
+												Workshops
 											</a>
 										</li>
 									</ul>
@@ -95,21 +95,19 @@
 								<div class="tab-content">
 									<div class="tab-pane" id="about">
 										<div class="row">
-											<h5 class="info-text"> Please tell us how to contact you.</h5>
+											<h5 class="info-text">Please tell us how to contact you.</h5>
 											<div class="col-sm-10 col-sm-offset-1">
 												<div class="form-group">
-													<label>First Name <small>(required)</small></label>
-													<input name="firstname" type="text" class="form-control">
-												</div>
-												<div class="form-group">
-													<label>Last Name <small>(required)</small></label>
-													<input name="lastname" type="text" class="form-control">
+													<label>Full Name <small>(required)</small></label>
+													<input name="fullname" type="text" class="form-control">
+													<small>This is the name to be on the invitation, please use formal format and in English only</small>
 												</div>
 											</div>
 											<div class="col-sm-10 col-sm-offset-1">
 												<div class="form-group">
 													<label>Email <small>(required)</small></label>
 													<input name="email" type="email" class="form-control" placeholder="yourname@gmail.com">
+													<small>We will send your invitation to this mail</small>
 												</div>
 											</div>
 											<div class="col-sm-10 col-sm-offset-1">
@@ -118,84 +116,94 @@
 													<input name="phone" type="text" class="form-control">
 												</div>
 											</div>
-										</div>
-									</div>
-
-									<div class="tab-pane" id="account">
-										<h5 class="info-text"> What are you doing? (checkboxes) </h5>
-										<div class="row">
-											<div class="col-sm-8 col-sm-offset-2">
-												<div class="col-sm-4">
-													<div class="choice" data-toggle="wizard-checkbox">
-														<input type="checkbox" name="jobb" value="Design">
-														<div class="card card-checkboxes card-hover-effect">
-															<i class="ti-paint-roller"></i>
-															<p>Design</p>
-														</div>
-													</div>
+											<div class="col-sm-10 col-sm-offset-1">
+												<div class="form-group">
+													<label>University/Company <small>(optional)</small></label>
+													<input name="workplace" type="text" class="form-control">
 												</div>
-												<div class="col-sm-4">
-													<div class="choice" data-toggle="wizard-checkbox">
-														<input type="checkbox" name="jobb" value="Code">
-														<div class="card card-checkboxes card-hover-effect">
-															<i class="ti-pencil-alt"></i>
-															<p>Code</p>
-														</div>
-													</div>
-												</div>
-												<div class="col-sm-4">
-													<div class="choice" data-toggle="wizard-checkbox">
-														<input type="checkbox" name="jobb" value="Develop">
-														<div class="card card-checkboxes card-hover-effect">
-															<i class="ti-star"></i>
-															<p>Develop</p>
-														</div>
-													</div>
+											</div>
+											<div class="col-sm-10 col-sm-offset-1">
+												<div class="form-group">
+													<label>Faculty/Occupation <small>(optional)</small></label>
+													<input name="occupaton" type="text" class="form-control">
 												</div>
 											</div>
 										</div>
 									</div>
 
-									<div class="tab-pane" id="address">
-									<div class="row">
-									<div class="col-sm-12">
-									<h5 class="info-text"> Are you living in a nice area? </h5>
+									<div class="tab-pane" id="knowledge">
+										<h5 class="info-text">How would you mark your level in computer science?<br><small>Note that the answers you choose will determine whether you will pass the filteration stage or not</small></h5>
+										<div class="row">
+											<div class="col-sm-8 col-sm-offset-2">
+												<div class="col-sm-4">
+													<div class="choice active" data-toggle="wizard-radio">
+														<input type="radio" name="level" value="Beginner" checked="true">
+														<div class="card card-checkboxes card-hover-effect" data-toggle="tab" data-target="#beginner">
+															<i class="ti-light-bulb"></i>
+															<p>Beginner</p>
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-4">
+													<div class="choice" data-toggle="wizard-radio">
+														<input type="radio" name="level" value="Intermediate">
+														<div class="card card-checkboxes card-hover-effect" data-toggle="tab" data-target="#intermediate">
+															<i class="ti-stats-up"></i>
+															<p>Intermediate</p>
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-4">
+													<div class="choice" data-toggle="wizard-radio">
+														<input type="radio" name="level" value="Advanced">
+														<div class="card card-checkboxes card-hover-effect"  data-toggle="tab" data-target="#advanced">
+															<i class="ti-crown"></i>
+															<p>Advanced</p>
+														</div>
+													</div>
+												</div>
+
+												<div id="my-tab-content" class="tab-content text-center">
+                            <div class="tab-pane active" id="beginner">
+															<h7>Tell us more about your computer science background and why you would like to join the event.</h7>
+                            </div>
+                            <div class="tab-pane" id="intermediate">
+															<h7>Show off your work, make sure to include projects worked on with links if possible</h7>
+                            </div>
+                            <div class="tab-pane" id="advanced">
+															<h7>Prove it!</h7>
+                            </div>
+														<textarea class="form-control" name="question" rows="10" cols="120"></textarea>
+                        </div>
+
+											</div>
+										</div>
 									</div>
-									<div class="col-sm-7 col-sm-offset-1">
-									<div class="form-group">
-									<label>Street Name</label>
-									<input type="text" class="form-control" placeholder="5h Avenue">
-									</div>
-									</div>
-									<div class="col-sm-3">
-									<div class="form-group">
-									<label>Street Number</label>
-									<input type="text" class="form-control" placeholder="242">
-									</div>
-									</div>
-									<div class="col-sm-5 col-sm-offset-1">
-									<div class="form-group">
-									<label>City</label>
-									<input type="text" class="form-control" placeholder="New York...">
-									</div>
-									</div>
-									<div class="col-sm-5">
-									<div class="form-group">
-									<label>Country</label><br>
-									<select name="country" class="form-control">
-									<option value="Afghanistan"> Afghanistan </option>
-									<option value="Albania"> Albania </option>
-									<option value="Algeria"> Algeria </option>
-									<option value="American Samoa"> American Samoa </option>
-									<option value="Andorra"> Andorra </option>
-									<option value="Angola"> Angola </option>
-									<option value="Anguilla"> Anguilla </option>
-									<option value="Antarctica"> Antarctica </option>
-									<option value="...">...</option>
-									</select>
-									</div>
-									</div>
-									</div>
+
+									<div class="tab-pane" id="workshops">
+										<h5 class="info-text">Are you planning on attending any workshops?<br><small>If approved for, we will contact you for further information</small></h5>
+										<div class="row">
+											<div class="col-sm-8 col-sm-offset-3">
+												<div class="col-sm-4">
+													<div class="choice active" data-toggle="wizard-radio">
+														<input type="radio" name="level" value="No" checked="true">
+														<div class="card card-checkboxes card-hover-effect" data-toggle="tab" data-target="#beginner">
+															<i class="ti-close"></i>
+															<p>No</p>
+														</div>
+													</div>
+												</div>
+												<div class="col-sm-4">
+													<div class="choice" data-toggle="wizard-radio">
+														<input type="radio" name="level" value="Yes">
+														<div class="card card-checkboxes card-hover-effect" data-toggle="tab" data-target="#intermediate">
+															<i class="ti-check"></i>
+															<p>Yes</p>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
 								<div class="wizard-footer">
