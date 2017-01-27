@@ -48,7 +48,10 @@ transparent = true;
         		      required: true,
         		      minlength: 6
         		    },
-        		    email: {
+                email: {
+        		      required: true
+        		    },
+                question: {
         		      required: true
         		    }
                 },
