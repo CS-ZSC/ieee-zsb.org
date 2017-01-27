@@ -140,7 +140,7 @@ transparent = true;
                         $(this).find('[type="checkbox"]').removeAttr('checked');
                     } else {
                         $(this).addClass('active');
-                        $(this).find('[type="checkbox"]').attr('checked','true');
+                        $(this).find('[type="checkbox"]').attr('checked','checked');
                     }
                 });
 
