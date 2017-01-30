@@ -27,5 +27,6 @@ gith({
         console.log('stderr:');
         console.log(stderr);
       }
+    });
   }
 });
