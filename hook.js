@@ -3,7 +3,7 @@ var execFile = require('child_process').execFile;
 
 gith({
   repo: 'cs-zsc/ieee-zsb.org'
-}).on('all', function(payload) {
+}).on('file:all', function(payload) {
   if (payload.branch === 'testing') {
     execFile(__dirname + '/hooks/update-testing.sh', function(err, stdout, stderr) {
       if (!err) {
