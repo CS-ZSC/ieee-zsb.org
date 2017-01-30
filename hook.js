@@ -10,11 +10,11 @@ gith({
         console.log('Testing branch updated successfully');
       } else {
         console.log('Error updating testing branch, checkout stdout/stderr');
-        console.log('stdout:');
-        console.log(stdout);
-        console.log('stderr:');
-        console.log(stderr);
       }
+      console.log('stdout:');
+      console.log(stdout);
+      console.log('stderr:');
+      console.log(stderr);
     });
   } else if (payload.branch === 'master') {
     execFile(__dirname + '/hooks/update-master.sh', function(err, stdout, stderr) {
@@ -22,11 +22,11 @@ gith({
         console.log('Testing branch updated successfully');
       } else {
         console.log('Error updating master branch, checkout stdout/stderr');
-        console.log('stdout:');
-        console.log(stdout);
-        console.log('stderr:');
-        console.log(stderr);
       }
+      console.log('stdout:');
+      console.log(stdout);
+      console.log('stderr:');
+      console.log(stderr);
     });
   }
 });
