@@ -22,7 +22,9 @@ app.post('/webhook', function(req, res) {
   if (true) { /* TODO: add secret verification */
     if (req.body.ref) { /* Push */
       var branch = req.body.ref.slice(12);
+      console.log('Github: Push event to branch ' + branch)
       if (branch == 'master' || branch == 'testing') {
+        console.log('GAD: Updating branch ' + branch)
         var repo = {
           origin: 'origin',
           branch: branch
