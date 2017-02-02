@@ -1,5 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var expressLogging = require('express-logging');
+var logger = require('logops');
 var gad = require('node-auto-deploy');
 
 var app = express();
@@ -10,6 +12,7 @@ app.set('views', __dirname + '/views');
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(expressLogging(logger));
 
 controllers(app); /* Setup routes */
 
