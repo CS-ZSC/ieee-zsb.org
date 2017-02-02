@@ -20,6 +20,8 @@ controllers(app); /* Setup routes */
 app.post('/webhook', function(req, res) {
   console.log('Received Github webhook');
   if (true) { /* TODO: add secret verification */
+    console.log(JSON.stringify(req.body));
+    console.log(req.body.ref);
     if (req.body.ref) { /* Push */
       var branch = req.body.ref.slice(12);
       console.log('Github: Push event to branch ' + branch)
