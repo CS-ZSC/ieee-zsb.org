@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var expressLogging = require('express-logging');
 var logger = require('logops');
 var gad = require('node-auto-deploy');
+var sha1 = require('sha1');
 
 var app = express();
 var controllers = require('./controllers/routes');
@@ -18,7 +19,9 @@ controllers(app); /* Setup routes */
 
 app.post('/webhook', function(req, res) {
   console.log('Received Github webhook');
-  if (req.body.secret == process.env.GIT_HOOK_SECRET) {
+  console.log('X-Hub-Signature: ' + req.get('X-Hub-Signature'))
+  console.log('GIT_HOOK_SECRET: ' + 'sha1=' + sha1(process.env.GIT_HOOK_SECRET))
+  if (req.get('X-Hub-Signature') == 'sha1=' + sha1(process.env.GIT_HOOK_SECRET)) {
     if (req.body.ref) { /* Push */
       var branch = req.body.ref.slice(12);
       if (branch == 'master' || branch == 'testing') {
