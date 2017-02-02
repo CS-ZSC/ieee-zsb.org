@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 var expressLogging = require('express-logging');
 var logger = require('logops');
 var gad = require('node-auto-deploy');
-var Crypto = require('crypto');
+const spawn = require('child_process').spawn;
 
 var app = express();
 var controllers = require('./controllers/routes');
