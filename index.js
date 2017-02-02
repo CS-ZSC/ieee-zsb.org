@@ -16,7 +16,8 @@ app.use(expressLogging(logger));
 
 controllers(app); /* Setup routes */
 
-app.post('/webhook', function(req, res){
+app.post('/webhook', function(req, res) {
+  console.log('Received Github webhook');
   if (req.body.secret == process.env.GIT_HOOK_SECRET) {
     if (req.body.ref) { /* Push */
       var branch = req.body.ref.slice(12);
@@ -29,6 +30,8 @@ app.post('/webhook', function(req, res){
         spawn("/root/update.sh",[repo.branch],{cwd:`${__dirname}`});
       }
     }
+  } else {
+    console.log('Github Webhook: Error: Wrong secret');
   }
   res.send('OK');
 });
