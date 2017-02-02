@@ -27,6 +27,7 @@ app.post('/webhook', function(req, res){
       }
     }
   }
+  res.send('OK');
 });
 
 var port = process.env.PORT || 80;
