@@ -21,7 +21,7 @@ app.post('/webhook', function(req, res) {
   console.log('Received Github webhook');
   var gsig = req.get('X-Hub-Signature').replace(/sha1=/, '');
   var secret = process.env.GIT_HOOK_SECRET;
-  var lsig = Crypto.createHmac('sha1', secret).update(req.body).digest('hex');
+  var lsig = Crypto.createHmac('sha1', secret).update(new Buffer(req.body)).digest('hex');
   console.log('X-Hub-Signature: ' + gsig)
   console.log('GIT_HOOK_SECRET: ' + lsig)
   if (true || req.get('X-Hub-Signature') == 'sha1=' + sha1(process.env.GIT_HOOK_SECRET)) {
