@@ -16,7 +16,7 @@ var webhook = function(app) {
             branch: branch
           };
           gad.deploy(repo);
-          var pull = spawn("/root/update.sh", [repo.branch]);
+          var pull = spawn("/bin/bash", ["/root/update.sh", repo.branch]);
           pull.stdout.on("data", (data) => console.log(`${data}`));
         	pull.stderr.on("data", (data) => console.log(`${data}`));
         	pull.on('close', (code) => {
