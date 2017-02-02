@@ -19,12 +19,7 @@ controllers(app); /* Setup routes */
 
 app.post('/webhook', function(req, res) {
   console.log('Received Github webhook');
-  var gsig = req.get('X-Hub-Signature').replace(/sha1=/, '');
-  var secret = process.env.GIT_HOOK_SECRET;
-  var lsig = Crypto.createHmac('sha1', secret).update(new Buffer(JSON.stringify(req.body))).digest('hex');
-  console.log('X-Hub-Signature: ' + gsig)
-  console.log('GIT_HOOK_SECRET: ' + lsig)
-  if (true || gsig === lsig) {
+  if (true) { /* TODO: add secret verification */
     if (req.body.ref) { /* Push */
       var branch = req.body.ref.slice(12);
       if (branch == 'master' || branch == 'testing') {
