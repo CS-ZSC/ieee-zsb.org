@@ -37,7 +37,7 @@ router.post('/mutex', function(req, res) {
     //res.render('events/confirm', {fullname: req.body.fullname, link: 'http://ieee-zsb.org'});
     database.warehouse.insertDoc('mutex_form', 'req_headers', req.headers, function(err, db) {
       console.log(err);
-      db.close();
+      if (db) db.close();
     });
     database.insertForm(req.body, function(err, db, id) {
       if (err == 'Already registered') {
