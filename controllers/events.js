@@ -19,7 +19,7 @@ router.get('/mutex/confirm/:id', function(req, res) {
       } else {
         res.render('events/success', {msg: 'Successfully confirmed registeration for MUTEX event'});
       }
-      db.close();
+      if (db) db.close();
     })
   } else {
     res.render('events/error', {error: 'ERR::INVALID_ID'});
@@ -62,7 +62,7 @@ router.post('/mutex', function(req, res) {
           }
         });
       }
-      db.close();
+      if (db) db.close();
     });
   } else {
     res.render('events/error', {error: 'ERR::INVALID_REQ'});
