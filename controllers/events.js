@@ -7,18 +7,23 @@ router.get('/mutex', function(req, res) {
 });
 
 router.get('/mutex/confirm/:id', function(req, res) {
-  database.confirm(req.params.id, function(err, db) {
-    if (err == 'Already confirmed') {
-      res.render('events/failure', {msg: 'Already confirmed'});
-    } else if (err) {
-      var ts = +new Date();
-      console.log('== ERROR LOG [' + ts + '] ==\n' + err + '\n== END ERROR LOG ==');
-      res.render('events/error', {error: 'ERR::LOG_' + ts});
-    } else {
-      res.render('events/success', {msg: 'Successfully confirmed registeration for MUTEX event'});
-    }
-    db.close();
-  })
+  var id = req.params.id;
+  if (id.match(/^[0-9a-fA-F]{24}$/)) {
+    database.confirm(req.params.id, function(err, db) {
+      if (err == 'Already confirmed') {
+        res.render('events/failure', {msg: 'Already confirmed'});
+      } else if (err) {
+        var ts = +new Date();
+        console.log('== ERROR LOG [' + ts + '] ==\n' + err + '\n== END ERROR LOG ==');
+        res.render('events/error', {error: 'ERR::LOG_' + ts});
+      } else {
+        res.render('events/success', {msg: 'Successfully confirmed registeration for MUTEX event'});
+      }
+      db.close();
+    })
+  } else {
+    res.render('events/error', {error: 'ERR::INVALID_ID'});
+  }
 });
 
 router.post('/mutex', function(req, res) {
