@@ -282,7 +282,7 @@ label.error:not(.form-control) {
 textarea.form-control {
   max-width: 100%;
   padding: 10px 18px;
-  resize: none;
+  /*resize: none;*/
 }
 
 .input-group-focus .input-group-addon {
