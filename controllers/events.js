@@ -34,7 +34,6 @@ router.post('/mutex', function(req, res) {
     if (!req.body.question) { /* Bypassed level question */
       req.body.programmer = 1;
     }
-    //res.render('events/confirm', {fullname: req.body.fullname, link: 'http://ieee-zsb.org'});
     database.warehouse.insertDoc('mutex_form', 'req_headers', req.headers, function(err, db) {
       console.log(err);
       if (db) db.close();
