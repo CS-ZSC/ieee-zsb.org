@@ -17,7 +17,7 @@ router.get('/mutex/confirm/:id', function(req, res) {
         console.log('== ERROR LOG [' + ts + '] ==\n' + err + '\n== END ERROR LOG ==');
         res.render('events/error', {error: 'ERR::LOG_' + ts});
       } else {
-        res.render('events/success', {msg: 'Successfully confirmed registeration for MUTEX event'});
+        res.render('events/success', {msg: 'Successfully confirmed registration for MUTEX event'});
       }
       if (db) db.close();
     })
@@ -48,7 +48,7 @@ router.post('/mutex', function(req, res) {
       } else {
         app.mailer.send('events/confirm', {
           to: req.body.email,
-          subject: 'Mutex event registeration confirmation',
+          subject: 'Mutex event registration confirmation',
           fullname: req.body.fullname,
           link: 'http://ieee-zsb.org:50080/events/mutex/confirm/' + id,
         }, function(err) {
