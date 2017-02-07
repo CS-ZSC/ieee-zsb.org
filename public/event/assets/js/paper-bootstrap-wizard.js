@@ -49,10 +49,14 @@ transparent = true;
         		      minlength: 6
         		    },
                 email: {
-        		      required: true
+        		      required: true,
         		    },
+                phone: {
+                  required: true,
+                },
                 question: {
-        		      required: true
+        		      required: true,
+                  minlength: 15,
         		    }
                 },
         	});
