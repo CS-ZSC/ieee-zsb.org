@@ -4,7 +4,7 @@ var ObjectId = require('mongodb').ObjectId;
 var mongoURI = process.env.MONGO_URI;
 var dataWarehouse = process.env.DWH_URI;
 var dwhDbURI = (db) => dataWarehouse + '/' + db + '?authSource=admin';
-var collection = "testing";
+var collection = process.env.PORT == 80? "master" : "testing";
 
 exports.warehouse = {
   insertDoc: function(db, collection, doc, callback) {
