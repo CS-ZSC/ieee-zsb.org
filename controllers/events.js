@@ -46,7 +46,7 @@ router.post('/mutex', function(req, res) {
         console.log('== ERROR LOG [' + ts + '] ==\n' + err + '\n== END ERROR LOG ==');
         res.render('events/error', {error: 'ERR::LOG_' + ts});
       } else {
-        var host = "http://ieee-zsb.org " + (process.env.port == 80? "" : "50080");
+        var host = "http://ieee-zsb.org " + (process.env.port == 80? "" : ":50080");
         app.mailer.send('events/confirm', {
           to: req.body.email,
           subject: 'Mutex event registration confirmation',
