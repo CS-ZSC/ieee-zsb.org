@@ -1,9 +1,14 @@
 const router = require('express').Router();
 const database = require('../models/database');
 var app = global.app;
+var suspended = false;
 
 router.get('/mutex', function(req, res) {
-  res.render('events/mutex');
+  if (suspended) {
+    res.render('events/suspended');
+  } else {
+    res.render('events/mutex');
+  }
 });
 
 router.get('/mutex/confirm/:id', function(req, res) {
