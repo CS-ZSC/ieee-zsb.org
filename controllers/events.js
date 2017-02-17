@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const database = require('../models/database');
 var app = global.app;
-var suspended = false;
+var suspended = true;
 
 router.get('/mutex', function(req, res) {
   if (suspended) {
