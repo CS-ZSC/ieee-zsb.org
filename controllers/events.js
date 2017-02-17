@@ -26,6 +26,44 @@ router.get('/mutex/confirm/:id', function(req, res) {
   }
 });
 
+router.get('/mutex/unconfirmed', function(req, res) {
+  database.getList(function(err, db, docs) {
+    list = docs.filter(x => x.confirmed != true);
+    res.render('events/table', {
+      list: list,
+    });
+  });
+});
+
+router.get('/mutex/reconfirm', function(req, res) {
+  database.reconfirm(req.query.mail, function(err, db, doc) {
+    if (err == 'Already confirmed') {
+      res.render('events/failure', {msg: 'Already confirmed'});
+    } else if (err) {
+      var ts = +new Date();
+      console.log('== ERROR LOG [' + ts + '] ==\n' + err + '\n== END ERROR LOG ==');
+      res.render('events/error', {error: 'ERR::LOG_' + ts});
+    } else {
+      var host = "http://ieee-zsb.org" + (process.env.port == 80? "" : ":50080");
+      app.mailer.send('events/confirm', {
+        to: doc.email,
+        subject: 'Mutex event registration confirmation',
+        fullname: doc.fullname,
+        link: host + '/events/mutex/confirm/' + doc._id,
+      }, function(err) {
+        if (err) {
+          var ts = +new Date();
+          console.log('== ERROR LOG [' + ts + '] ==\n' + err + '\n== END ERROR LOG ==');
+          res.render('events/error', {error: 'ERR::LOG_' + ts});
+        } else {
+          res.render('events/success', {msg: 'A confirmation email has been sent to <a>' + doc.email + '</a>'});
+        }
+      });
+    }
+    if (db) db.close();
+  });
+});
+
 router.post('/mutex', function(req, res) {
   var timestamp = +new Date();
   req.body.timestamp = timestamp;
@@ -46,7 +84,11 @@ router.post('/mutex', function(req, res) {
         console.log('== ERROR LOG [' + ts + '] ==\n' + err + '\n== END ERROR LOG ==');
         res.render('events/error', {error: 'ERR::LOG_' + ts});
       } else {
+<<<<<<< HEAD
         var host = "http://ieee-zsb.org" + (process.env.PORT == 80? "" : ":50080");
+=======
+        var host = "http://ieee-zsb.org" + (process.env.port == 80? "" : ":50080");
+>>>>>>> testing
         app.mailer.send('events/confirm', {
           to: req.body.email,
           subject: 'Mutex event registration confirmation',
