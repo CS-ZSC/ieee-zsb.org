@@ -49,6 +49,22 @@ exports.insertForm = function(user, callback) {
   });
 }
 
+exports.getList = function(callback) {
+  MongoClient.connect(mongoURI, function(err, db) {
+    if (err) {
+      callback(err, db);
+    } else {
+      db.collection(collection).find({}).toArray(function(err, docs) {
+        if (err) {
+          callback(err, db);
+        } else {
+            callback(null, db, docs);
+        }
+      });
+    }
+  });
+}
+
 exports.confirm = function(id, callback) {
   MongoClient.connect(mongoURI, function(err, db) {
     if (err) {
@@ -67,6 +83,26 @@ exports.confirm = function(id, callback) {
               callback(null, db);
             }
           });
+        }
+      });
+    }
+  });
+}
+
+exports.reconfirm = function(mail, callback) {
+  MongoClient.connect(mongoURI, function(err, db) {
+    if (err) {
+      callback(err, db);
+    } else {
+      db.collection(collection).findOne({'email': mail}, function(err, doc) {
+        if (err) {
+          callback(err, db);
+        } else if (!doc) {
+          callback('Not found', db);
+        } if (doc.confirmed == true) {
+          callback('Already confirmed', db);
+        } else {
+          callback(null, db, doc);
         }
       });
     }
