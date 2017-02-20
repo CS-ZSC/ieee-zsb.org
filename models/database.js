@@ -136,7 +136,9 @@ exports.updateDoc = function(id, field, value, callback) {
         if (err) {
           callback(err, db);
         } else {
-          db.collection(collection).update({'_id': new ObjectId(id)}, {$set: {field: value}}, function(err, count) {
+          var update = {$set: {}};
+          update['$set'][field] = value;
+          db.collection(collection).update({'_id': new ObjectId(id)}, update, function(err, count) {
             if (err) {
               callback(err, db);
             } else {
