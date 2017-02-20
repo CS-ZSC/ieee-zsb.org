@@ -31,6 +31,57 @@ router.get('/mutex/confirm/:id', function(req, res) {
   }
 });
 
+router.get('/mutex/workshop', function(req, res) {
+  var id = req.query.id;
+  if (id && id.match(/^[0-9a-fA-F]{24}$/)) {
+    database.getDoc(id, function(err, db, doc) {
+      if (err) {
+        var ts = +new Date();
+        console.log('== ERROR LOG [' + ts + '] ==\n' + err + '\n== END ERROR LOG ==');
+        res.render('events/error', {error: 'ERR::LOG_' + ts});
+      } else {
+        if (doc.accepted == true) {
+          res.render('events/workshop');
+        } else {
+          res.render('events/failure', {msg: 'ERR::NOT_ACCEPTED'});
+        }
+      }
+      if (db) db.close();
+    })
+  } else {
+    res.render('events/failure', {msg: 'ERR::INVALID_ID'});
+  }
+});
+
+router.post('/mutex/workshop', function(req, res) {
+  var id = req.query.id;
+  var workshop = req.body.workshop;
+  if (id && id.match(/^[0-9a-fA-F]{24}$/) && workshop && workshop.match(/0|1|2/)) {
+    database.getDoc(id, function(err, db, doc) {
+      if (err) {
+        var ts = +new Date();
+        console.log('== ERROR LOG [' + ts + '] ==\n' + err + '\n== END ERROR LOG ==');
+        res.render('events/error', {error: 'ERR::LOG_' + ts});
+      } else {
+        if (doc.accepted == true) {
+          database.updateDoc(id, 'workshop', workshop, function(err, db) {
+            if (err) {
+              res.render('events/error', {error: 'ERR::DB'});
+            } else {
+              res.render('events/success', {msg: 'Successfully selected workshop, await your inviation with confirmation if you may attend the workshop'});
+            }
+          });
+        } else {
+          res.render('events/failure', {msg: 'ERR::NOT_ACCEPTED'});
+        }
+      }
+      if (db) db.close();
+    });
+  } else {
+    res.render('events/failure', {msg: 'ERR::INVALID_REQ'});
+  }
+});
+
 router.get('/mutex/unconfirmed', function(req, res) {
   database.getList(function(err, db, docs) {
     list = docs.filter(x => x.confirmed != true);

@@ -108,3 +108,43 @@ exports.reconfirm = function(mail, callback) {
     }
   });
 }
+
+exports.getDoc = function(id, callback) {
+  MongoClient.connect(mongoURI, function(err, db) {
+    if (err) {
+      callback(err, db);
+    } else {
+      db.collection(collection).findOne({'_id': new ObjectId(id)}, function(err, doc) {
+        if (err) {
+          callback(err, db);
+        } else if (!doc) {
+          callback('Not found', db);
+        } else {
+          callback(null, db, doc);
+        }
+      });
+    }
+  });
+}
+
+exports.updateDoc = function(id, field, value, callback) {
+  MongoClient.connect(mongoURI, function(err, db) {
+    if (err) {
+      callback(err, db);
+    } else {
+      db.collection(collection).findOne({'_id': new ObjectId(id)}, function(err, doc) {
+        if (err) {
+          callback(err, db);
+        } else {
+          db.collection(collection).update({'_id': new ObjectId(id)}, {$set: {field: value}}, function(err, count) {
+            if (err) {
+              callback(err, db);
+            } else {
+              callback(null, db);
+            }
+          });
+        }
+      });
+    }
+  });
+}
