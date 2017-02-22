@@ -32,6 +32,9 @@ router.get('/mutex/confirm/:id', function(req, res) {
 });
 
 router.get('/mutex/workshop', function(req, res) {
+  res.render('events/suspended');
+  /* Suspended */
+  /*
   var id = req.query.id;
   if (id && id.match(/^[0-9a-fA-F]{24}$/)) {
     database.getDoc(id, function(err, db, doc) {
@@ -51,6 +54,7 @@ router.get('/mutex/workshop', function(req, res) {
   } else {
     res.render('events/failure', {msg: 'ERR::INVALID_ID'});
   }
+  */
 });
 
 router.post('/mutex/workshop', function(req, res) {
