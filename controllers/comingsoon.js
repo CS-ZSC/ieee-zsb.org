@@ -6,7 +6,7 @@ router.get('/', function(req, res) {
 });
 
 router.post('/check', function(req, res) {
-  var id = req.query._id;
+  var id = req.body._id;
   if (id && id.match(/^[0-9a-fA-F]{24}$/)) {
     database.getDoc(id, function(err, db, doc) {
       if (err) {
