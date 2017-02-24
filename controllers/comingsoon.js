@@ -6,7 +6,7 @@ router.get('/', function(req, res) {
 });
 
 router.post('/check', function(req, res) {
-  var id = req.query.id;
+  var id = req.query._id;
   if (id && id.match(/^[0-9a-fA-F]{24}$/)) {
     database.getDoc(id, function(err, db, doc) {
       if (err) {
@@ -19,6 +19,10 @@ router.post('/check', function(req, res) {
   } else {
     res.send({accepted: false, attended: false, error: "INV_ID"});
   }
+});
+
+router.get('/check', function(req, res) {
+  res.send("It works");
 });
 
 module.exports = router;
