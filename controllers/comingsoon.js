@@ -17,7 +17,7 @@ router.post('/check', function(req, res) {
       if (db) db.close();
     })
   } else {
-    res.send({id: id, accepted: false, attended: false, error: "INV_ID"});
+    res.send({id: id, fullname: undefined, accepted: false, attended: false, error: "INV_ID"});
   }
 });
 
