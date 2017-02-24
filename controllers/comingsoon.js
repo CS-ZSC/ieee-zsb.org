@@ -13,6 +13,14 @@ router.post('/check', function(req, res) {
         res.send({id: id, fullname: "", accepted: false, attended: false, error: err});
       } else {
         res.send({id: id, fullname: doc.fullname, accepted: doc.accepted, attended: doc.attended? true : false})
+        if (doc.accepted) {
+          database.updateDoc(id, "attended", true, function(err, db) {
+            if (err) {
+              console.log(err);
+            }
+            if (db) db.close();
+          });
+        }
       }
       if (db) db.close();
     })
